@@ -1,0 +1,61 @@
+name: Sync Fork
+
+on:
+  push:
+    branches:
+      - sync-fork
+  schedule:
+    - cron: "0 6 * * *" # Everyday at 6 o'clock
+  workflow_dispatch: # on button click
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Configure Git
+        run: |
+          git config user.name 'TanguyBarthelemy'
+          git config user.email 'TanguyBarthelemy@users.noreply.github.com'
+                
+      - name: Switch to develop branch
+        run: |
+          git fetch --all
+          git checkout develop
+        
+      - name: Add upstream remote
+        run: git remote add upstream https://github.com/rjdemetra/rjd3bench.git
+        
+      - name: Fetch upstream changes
+        run: git fetch upstream
+
+      - name: Determine branch status
+        id: branch_status
+        run: |
+          AHEAD=$(git log --pretty=oneline upstream/develop..origin/develop | wc -l)
+          BEHIND=$(git log --pretty=oneline origin/develop..upstream/develop | wc -l)
+          if [ $AHEAD -gt 0 ] && [ $BEHIND -eq 0 ]; then
+            echo "branch_status=ahead" >> $GITHUB_ENV
+            echo "Branch is ahead of upstream by $AHEAD commit(s)."
+          elif [ $BEHIND -gt 0 ] && [ $AHEAD -eq 0 ]; then
+            echo "branch_status=behind" >> $GITHUB_ENV
+            echo "Branch is behind upstream by $BEHIND commit(s)."
+          elif [ $AHEAD -gt 0 ] && [ $BEHIND -gt 0 ]; then
+            echo "branch_status=diverged" >> $GITHUB_ENV
+            echo "::error::Branch has diverged from upstream. Please resolve the divergence."
+            exit 1
+          else
+            echo "branch_status=same" >> $GITHUB_ENV
+            echo "Branch is at the same level as upstream."
+          fi
+
+      - name: Merge upstream/develop changes
+        if: env.branch_status == 'behind'
+        run: git merge upstream/develop
+
+      - name: Push changes to fork
+        if: env.branch_status == 'behind'
+        run: git push origin develop
