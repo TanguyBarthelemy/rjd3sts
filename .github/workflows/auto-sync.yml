@@ -27,7 +27,7 @@ jobs:
           git checkout develop
         
       - name: Add upstream remote
-        run: git remote add upstream https://github.com/rjdemetra/rjd3bench.git
+        run: git remote add upstream https://github.com/rjdemetra/rjd3sts.git
         
       - name: Fetch upstream changes
         run: git fetch upstream
