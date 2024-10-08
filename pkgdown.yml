@@ -1,12 +1,12 @@
 pandoc: 3.1.11
-pkgdown: 2.1.0
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   bsm: bsm.html
   regsplines: regsplines.html
   sts: sts.html
   tdvar: tdvar.html
-last_built: 2024-09-09T14:31Z
+last_built: 2024-10-08T08:18Z
 urls:
   reference: https://rjdverse.github.io/rjd3sts/reference
   article: https://rjdverse.github.io/rjd3sts/articles

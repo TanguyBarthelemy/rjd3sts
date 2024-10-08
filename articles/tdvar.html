@@ -68,7 +68,7 @@
                         <h4 data-toc-skip class="author">Jean
 Palate</h4>
             
-            <h4 data-toc-skip class="date">2024-09-09</h4>
+            <h4 data-toc-skip class="date">2024-10-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3sts/blob/develop/vignettes/tdvar.Rmd" class="external-link"><code>vignettes/tdvar.Rmd</code></a></small>
       <div class="d-none name"><code>tdvar.Rmd</code></div>
@@ -114,9 +114,12 @@ of the series.</p>
 <span><span class="va">model</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/model.html">model</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># create the components and add them to the model</span></span>
-<span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/add.html">add</a></span><span class="op">(</span><span class="va">model</span>, <span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/sarima.html">sarima</a></span><span class="op">(</span><span class="st">"airline"</span>, <span class="fl">12</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">airline</span> <span class="op">&lt;-</span> <span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/sarima.html">sarima</a></span><span class="op">(</span><span class="st">"airline"</span>, <span class="fl">12</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">vtd</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/reg_td.html">reg_td</a></span><span class="op">(</span><span class="st">"td"</span>, <span class="fl">12</span>, <span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">start</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, contrast <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/add.html">add</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">vtd</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/reg_td.html">reg_td</a></span><span class="op">(</span><span class="st">"td"</span>, <span class="fl">12</span>, <span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">start</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, contrast <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/add.html">add</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">airline</span><span class="op">)</span></span>
+<span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/add.html">add</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">vtd</span><span class="op">)</span></span>
+<span></span>
 <span><span class="co">#estimate the model</span></span>
 <span><span class="va">rslt</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/estimate.html">estimate</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">s</span><span class="op">)</span></span>
 <span></span>
@@ -182,10 +185,13 @@ method</p>
 <span><span class="va">llt</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/locallineartrend.html">locallineartrend</a></span><span class="op">(</span><span class="st">'l'</span><span class="op">)</span></span>
 <span><span class="va">seas</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/seasonal.html">seasonal</a></span><span class="op">(</span><span class="st">"s"</span>, <span class="fl">12</span>, <span class="st">"HarrisonStevens"</span><span class="op">)</span></span>
 <span><span class="va">n</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/noise.html">noise</a></span><span class="op">(</span><span class="st">'n'</span><span class="op">)</span></span>
+<span><span class="va">vtd</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/reg_td.html">reg_td</a></span><span class="op">(</span><span class="st">"td"</span>, <span class="fl">12</span>, <span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">start</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, contrast <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span></span>
 <span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/add.html">add</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">llt</span><span class="op">)</span></span>
 <span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/add.html">add</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">seas</span><span class="op">)</span></span>
 <span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/add.html">add</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">n</span><span class="op">)</span></span>
-<span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/add.html">add</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">vtd</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/reg_td.html">reg_td</a></span><span class="op">(</span><span class="st">"td"</span>, <span class="fl">12</span>, <span class="fu"><a href="https://rdrr.io/r/stats/start.html" class="external-link">start</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span>, contrast <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/add.html">add</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">vtd</span><span class="op">)</span></span>
+<span></span>
 <span><span class="co">#estimate the model</span></span>
 <span><span class="va">rslt</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/estimate.html">estimate</a></span><span class="op">(</span><span class="va">model</span>, <span class="va">s</span><span class="op">)</span></span>
 <span></span>
@@ -219,7 +225,7 @@ method</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>
