@@ -730,7 +730,7 @@ aggregation<-function(name, components){
   if (!is.list(components) || length(components)<2 ) {
     stop("incorrect argument, components should be a list of at least 2 items")}
   plist<-list()
-  for (i in 1:length(components)){
+  for (i in seq_along(components)){
     plist[[i]]<-components[[i]]$internal
   }
   jcmps<-.jarray(plist, contents.class = "jdplus/sts/base/core/msts/StateItem")
