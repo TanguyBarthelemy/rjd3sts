@@ -71,7 +71,7 @@
                         <h4 data-toc-skip class="author">Jean
 Palate</h4>
             
-            <h4 data-toc-skip class="date">2025-12-15</h4>
+            <h4 data-toc-skip class="date">2026-03-17</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3sts/blob/develop/vignettes/tdairline.Rmd" class="external-link"><code>vignettes/tdairline.Rmd</code></a></small>
       <div class="d-none name"><code>tdairline.Rmd</code></div>
@@ -101,7 +101,7 @@ preference for the time-dependent models.</p>
 <span><span class="va">all</span><span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="va"><a href="https://rjdverse.github.io/rjd3toolkit/reference/Retail.html" class="external-link">Retail</a></span>, <span class="kw">function</span><span class="op">(</span><span class="va">z</span><span class="op">)</span> <span class="fu">test</span><span class="op">(</span><span class="va">z</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">all</span>, breaks<span class="op">=</span><span class="fl">10</span>, main<span class="op">=</span><span class="st">"Distribution of the likelihood ratios"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tdairline_files/figure-html/estimation-1.png" class="r-plt" width="576"></p>
+<p><img src="tdairline_files/figure-html/estimation-1.png" class="r-plt" alt="" width="576"></p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">all</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     AllOtherGenMerchandiseStores    AllOtherHomeFurnishingsStores </span></span>
@@ -183,7 +183,7 @@ smoother (time-dependent series in red)</p>
 <span><span class="va">q</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/tdairline_estimation.html">tdairline_estimation</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tdss</span><span class="op">&lt;-</span><span class="fu">rjd3sts</span><span class="fu">::</span><span class="fu"><a href="../reference/tdairline_decomposition.html">tdairline_decomposition</a></span><span class="op">(</span><span class="va">s</span>, <span class="va">q</span><span class="op">$</span><span class="va">ltd_sarima</span><span class="op">$</span><span class="va">parameters</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tdairline_files/figure-html/sa-1.png" class="r-plt" width="576"><img src="tdairline_files/figure-html/sa-2.png" class="r-plt" width="576"><img src="tdairline_files/figure-html/sa-3.png" class="r-plt" width="576"><img src="tdairline_files/figure-html/sa-4.png" class="r-plt" width="576"><img src="tdairline_files/figure-html/sa-5.png" class="r-plt" width="576"><img src="tdairline_files/figure-html/sa-6.png" class="r-plt" width="576"></p>
+<p><img src="tdairline_files/figure-html/sa-1.png" class="r-plt" alt="" width="576"><img src="tdairline_files/figure-html/sa-2.png" class="r-plt" alt="" width="576"><img src="tdairline_files/figure-html/sa-3.png" class="r-plt" alt="" width="576"><img src="tdairline_files/figure-html/sa-4.png" class="r-plt" alt="" width="576"><img src="tdairline_files/figure-html/sa-5.png" class="r-plt" alt="" width="576"><img src="tdairline_files/figure-html/sa-6.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level4">
 <h4 id="main-results">Main results<a class="anchor" aria-label="anchor" href="#main-results"></a>
@@ -207,10 +207,11 @@ smoother (time-dependent series in red)</p>
 <h6 id="canonical-decomposition">Canonical decomposition<a class="anchor" aria-label="anchor" href="#canonical-decomposition"></a>
 </h6>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/rjdverse/rjd3tramoseats" class="external-link">"rjd3tramoseats"</a></span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">airline_decomposition</span><span class="op">&lt;-</span><span class="kw">function</span><span class="op">(</span><span class="va">period</span>, <span class="va">th</span>, <span class="va">bth</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">sarima</span><span class="op">&lt;-</span><span class="fu">rjd3toolkit</span><span class="fu">::</span><span class="fu"><a href="https://rjdverse.github.io/rjd3toolkit/reference/sarima_model.html" class="external-link">sarima_model</a></span><span class="op">(</span><span class="st">"m"</span>, <span class="va">period</span>, <span class="cn">NULL</span>, <span class="fl">1</span>, <span class="va">th</span>, <span class="cn">NULL</span>, <span class="fl">1</span>, <span class="va">bth</span><span class="op">)</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span> <span class="op">(</span><span class="fu">rjd3tramoseats</span><span class="fu">::</span><span class="fu"><a href="https://rjdverse.github.io/rjd3tramoseats/reference/seats_decompose.html" class="external-link">seats_decompose</a></span><span class="op">(</span><span class="va">sarima</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rjdverse.github.io/rjd3tramoseats/reference/seats_decompose.html" class="external-link">seats_decompose</a></span><span class="op">(</span><span class="va">sarima</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="va">airline_variances</span><span class="op">&lt;-</span><span class="kw">function</span><span class="op">(</span><span class="va">period</span>, <span class="va">th</span>, <span class="va">bth</span><span class="op">)</span><span class="op">{</span></span>
@@ -230,7 +231,7 @@ smoother (time-dependent series in red)</p>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/matplot.html" class="external-link">matplot</a></span><span class="op">(</span><span class="va">vars</span>, main<span class="op">=</span><span class="st">"Models of the components. Innovation variances"</span>, type <span class="op">=</span> <span class="st">'l'</span>, ylab<span class="op">=</span><span class="st">"Variances"</span>,col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topleft"</span>, legend<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"T"</span>, <span class="st">"S"</span>, <span class="st">"I"</span><span class="op">)</span>,</span>
 <span>       col<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span><span class="op">)</span>, lty<span class="op">=</span><span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, cex<span class="op">=</span><span class="fl">0.8</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tdairline_files/figure-html/cd-1.png" class="r-plt" width="576"></p>
+<p><img src="tdairline_files/figure-html/cd-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 </div>
 </div>

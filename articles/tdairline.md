@@ -132,10 +132,11 @@ $\bar{\Theta} =$**-0.7288104** \[ -0.4576208, -1\]
 ###### Canonical decomposition
 
 ``` r
+library("rjd3tramoseats")
 
 airline_decomposition<-function(period, th, bth){
   sarima<-rjd3toolkit::sarima_model("m", period, NULL, 1, th, NULL, 1, bth)
-  return (rjd3tramoseats::seats_decompose(sarima))
+  return(seats_decompose(sarima))
 }
 
 airline_variances<-function(period, th, bth){
