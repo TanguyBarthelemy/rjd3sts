@@ -14,6 +14,7 @@ below. Likelihood ratios above 4 indicate a significant preference for
 the time-dependent models.
 
 ``` r
+
 test<-function(z){
   q<-rjd3sts::tdairline_estimation(z)
   return (q$ltd_sarima$likelihood- q$sarima$likelihood)
@@ -27,9 +28,10 @@ hist(all, breaks=10, main="Distribution of the likelihood ratios")
 ![](tdairline_files/figure-html/estimation-1.png)
 
 ``` r
+
 print(all)
 #>     AllOtherGenMerchandiseStores    AllOtherHomeFurnishingsStores 
-#>                        0.2599687                        1.8012195 
+#>                        0.2599687                        1.8012191 
 #>        AppltvAndOtherElectStores                AutomobileDealers 
 #>                        2.6904441                        7.5012325 
 #>          BeerWineAndLiquorStores                       BookStores 
@@ -49,7 +51,7 @@ print(all)
 #>             FamilyClothingStores              FloorCoveringStores 
 #>                        5.3726852                        1.5696636 
 #>            FoodAndBeverageStores    FoodServicesAndDrinkingPlaces 
-#>                        5.9242184                        0.5840378 
+#>                        5.9242166                        0.5840378 
 #>                      FuelDealers           FullServiceRestaurants 
 #>                        0.8083703                        0.2150196 
 #> FurnitureAndHomeFurnishingsStore FurnitureHomeFurnElectronicsAndA 
@@ -57,13 +59,13 @@ print(all)
 #>                  FurnitureStores                             Gafo 
 #>                        1.9144394                        3.8209734 
 #>                 GasolineStations         GeneralMerchandiseStores 
-#>                       13.8954845                        5.9325953 
+#>                       13.8954843                        5.9325953 
 #>     GiftNoveltyAndSouvenirStores                    GroceryStores 
-#>                        1.4066652                        5.1702627 
+#>                        1.4066652                        5.1702610 
 #>                   HardwareStores      HealthAndPersonalCareStores 
-#>                        0.9931652                        7.3125975 
+#>                        0.9931652                        7.3125960 
 #>            HobbyToyAndGameStores            HomeFurnishingsStores 
-#>                        2.8479988                        3.0032888 
+#>                        2.8479987                        3.0032888 
 #>         HouseholdApplianceStores                    JewelryStores 
 #>                        0.6237299                        1.4549538 
 #>       LimitedServiceEatingPlaces               MensClothingStores 
@@ -77,15 +79,15 @@ print(all)
 #>              OtherClothingStores    OtherGeneralMerchandiseStores 
 #>                        1.0650867                        3.4746228 
 #>          PaintAndWallpaperStores          PharmaciesAndDrugStores 
-#>                        0.4836048                        6.8898675 
+#>                        0.4836048                        6.8900502 
 #>       RadioTVAndOtherElectStores  RetailAndFoodServicesSalesTotal 
-#>                        3.4329575                       17.3531481 
+#>                        3.4329575                       17.3531476 
 #> RetailSalesTotalExclMotorVehicle                 RetailSalesTotal 
-#>                       21.4831574                       17.7406809 
+#>                       21.4831517                       17.7397361 
 #>                       ShoeStores SportingGoodsHobbyBookAndMusicSt 
 #>                        6.3533323                        2.9775295 
 #>              SportingGoodsStores SupermarketsAndOtherGroceryExcep 
-#>                        0.2488864                        0.1754513 
+#>                        0.2488864                        0.1754569 
 #>                   UsedCarDealers            UsedMerchandiseStores 
 #>                        3.1951571                        3.1441175 
 #>     WarehouseClubsAndSuperstores             WomensClothingStores 
@@ -100,6 +102,7 @@ airline model and the time-dependent airline model, using the Kalman
 smoother (time-dependent series in red)
 
 ``` r
+
 
 
 s<-log(rjd3toolkit::Retail$GasolineStations)
@@ -117,21 +120,22 @@ tdss<-rjd3sts::tdairline_decomposition(s, q$ltd_sarima$parameters)
 
 log-likelihood = 422.4026504
 
-$\theta =$ 0.3963675
+$`\theta=`$ 0.3963674
 
-$\Theta =$ -0.8673957
+$`\Theta=`$ -0.867396
 
 ###### Time-dependent airline
 
-log-likelihood = 435.1414352
+log-likelihood = 435.141434
 
-$\bar{\theta} =$**0.2427773** \[ -0.1299741, 0.6155286\]
+$`\bar{\theta}=`$**0.2427773** \[ -0.129974, 0.6155285\]
 
-$\bar{\Theta} =$**-0.7288104** \[ -0.4576208, -1\]
+$`\bar{\Theta}=`$**-0.7288104** \[ -0.4576208, -1\]
 
 ###### Canonical decomposition
 
 ``` r
+
 library("rjd3tramoseats")
 
 airline_decomposition<-function(period, th, bth){

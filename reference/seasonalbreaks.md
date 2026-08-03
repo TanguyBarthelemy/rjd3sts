@@ -54,5 +54,5 @@ seasonalbreaks(
 ``` r
  x<-rjd3toolkit::Retail$BookStores
  seasonalbreaks(x)
-#> Error in .jcall("jdplus/sts/base/r/StsOutliersDetection", "[D", "seasonalBreaks",     data, as.integer(period), as.integer(level), as.integer(slope),     as.integer(noise), seasonal, rjd3toolkit::.r2jd_matrix(X)): java.lang.NoSuchMethodError: 'jdplus.toolkit.base.api.data.DoubleSeq jdplus.toolkit.base.core.ssf.univariate.DefaultSmoothingResults.R(int)'
+#> Error in .jcheck(): java.lang.NoSuchMethodError: 'jdplus.toolkit.base.core.ssf.akf.SmoothingOutput jdplus.toolkit.base.core.ssf.akf.AkfToolkit.robustSmooth(jdplus.toolkit.base.core.ssf.univariate.ISsf, jdplus.toolkit.base.core.ssf.univariate.ISsfData, boolean, boolean)'
 ```

@@ -12,8 +12,8 @@
 <link rel="icon" sizes="any" href="../favicon.ico">
 <link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Time dependent airline model">
 </head>
@@ -71,7 +71,7 @@
                         <h4 data-toc-skip class="author">Jean
 Palate</h4>
             
-            <h4 data-toc-skip class="date">2026-03-17</h4>
+            <h4 data-toc-skip class="date">2026-08-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/rjdverse/rjd3sts/blob/develop/vignettes/tdairline.Rmd" class="external-link"><code>vignettes/tdairline.Rmd</code></a></small>
       <div class="d-none name"><code>tdairline.Rmd</code></div>
@@ -105,7 +105,7 @@ preference for the time-dependent models.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">all</span><span class="op">)</span></span>
 <span><span class="co">#&gt;     AllOtherGenMerchandiseStores    AllOtherHomeFurnishingsStores </span></span>
-<span><span class="co">#&gt;                        0.2599687                        1.8012195 </span></span>
+<span><span class="co">#&gt;                        0.2599687                        1.8012191 </span></span>
 <span><span class="co">#&gt;        AppltvAndOtherElectStores                AutomobileDealers </span></span>
 <span><span class="co">#&gt;                        2.6904441                        7.5012325 </span></span>
 <span><span class="co">#&gt;          BeerWineAndLiquorStores                       BookStores </span></span>
@@ -125,7 +125,7 @@ preference for the time-dependent models.</p>
 <span><span class="co">#&gt;             FamilyClothingStores              FloorCoveringStores </span></span>
 <span><span class="co">#&gt;                        5.3726852                        1.5696636 </span></span>
 <span><span class="co">#&gt;            FoodAndBeverageStores    FoodServicesAndDrinkingPlaces </span></span>
-<span><span class="co">#&gt;                        5.9242184                        0.5840378 </span></span>
+<span><span class="co">#&gt;                        5.9242166                        0.5840378 </span></span>
 <span><span class="co">#&gt;                      FuelDealers           FullServiceRestaurants </span></span>
 <span><span class="co">#&gt;                        0.8083703                        0.2150196 </span></span>
 <span><span class="co">#&gt; FurnitureAndHomeFurnishingsStore FurnitureHomeFurnElectronicsAndA </span></span>
@@ -133,13 +133,13 @@ preference for the time-dependent models.</p>
 <span><span class="co">#&gt;                  FurnitureStores                             Gafo </span></span>
 <span><span class="co">#&gt;                        1.9144394                        3.8209734 </span></span>
 <span><span class="co">#&gt;                 GasolineStations         GeneralMerchandiseStores </span></span>
-<span><span class="co">#&gt;                       13.8954845                        5.9325953 </span></span>
+<span><span class="co">#&gt;                       13.8954843                        5.9325953 </span></span>
 <span><span class="co">#&gt;     GiftNoveltyAndSouvenirStores                    GroceryStores </span></span>
-<span><span class="co">#&gt;                        1.4066652                        5.1702627 </span></span>
+<span><span class="co">#&gt;                        1.4066652                        5.1702610 </span></span>
 <span><span class="co">#&gt;                   HardwareStores      HealthAndPersonalCareStores </span></span>
-<span><span class="co">#&gt;                        0.9931652                        7.3125975 </span></span>
+<span><span class="co">#&gt;                        0.9931652                        7.3125960 </span></span>
 <span><span class="co">#&gt;            HobbyToyAndGameStores            HomeFurnishingsStores </span></span>
-<span><span class="co">#&gt;                        2.8479988                        3.0032888 </span></span>
+<span><span class="co">#&gt;                        2.8479987                        3.0032888 </span></span>
 <span><span class="co">#&gt;         HouseholdApplianceStores                    JewelryStores </span></span>
 <span><span class="co">#&gt;                        0.6237299                        1.4549538 </span></span>
 <span><span class="co">#&gt;       LimitedServiceEatingPlaces               MensClothingStores </span></span>
@@ -153,15 +153,15 @@ preference for the time-dependent models.</p>
 <span><span class="co">#&gt;              OtherClothingStores    OtherGeneralMerchandiseStores </span></span>
 <span><span class="co">#&gt;                        1.0650867                        3.4746228 </span></span>
 <span><span class="co">#&gt;          PaintAndWallpaperStores          PharmaciesAndDrugStores </span></span>
-<span><span class="co">#&gt;                        0.4836048                        6.8898675 </span></span>
+<span><span class="co">#&gt;                        0.4836048                        6.8900502 </span></span>
 <span><span class="co">#&gt;       RadioTVAndOtherElectStores  RetailAndFoodServicesSalesTotal </span></span>
-<span><span class="co">#&gt;                        3.4329575                       17.3531481 </span></span>
+<span><span class="co">#&gt;                        3.4329575                       17.3531476 </span></span>
 <span><span class="co">#&gt; RetailSalesTotalExclMotorVehicle                 RetailSalesTotal </span></span>
-<span><span class="co">#&gt;                       21.4831574                       17.7406809 </span></span>
+<span><span class="co">#&gt;                       21.4831517                       17.7397361 </span></span>
 <span><span class="co">#&gt;                       ShoeStores SportingGoodsHobbyBookAndMusicSt </span></span>
 <span><span class="co">#&gt;                        6.3533323                        2.9775295 </span></span>
 <span><span class="co">#&gt;              SportingGoodsStores SupermarketsAndOtherGroceryExcep </span></span>
-<span><span class="co">#&gt;                        0.2488864                        0.1754513 </span></span>
+<span><span class="co">#&gt;                        0.2488864                        0.1754569 </span></span>
 <span><span class="co">#&gt;                   UsedCarDealers            UsedMerchandiseStores </span></span>
 <span><span class="co">#&gt;                        3.1951571                        3.1441175 </span></span>
 <span><span class="co">#&gt;     WarehouseClubsAndSuperstores             WomensClothingStores </span></span>
@@ -193,15 +193,15 @@ smoother (time-dependent series in red)</p>
 </h5>
 <p>log-likelihood = 422.4026504</p>
 <p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>θ</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">\theta=</annotation></semantics></math>
-0.3963675</p>
-<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Θ</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">\Theta=</annotation></semantics></math>
--0.8673957</p>
+0.3963674</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Θ</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">\Theta=</annotation></semantics></math>
+-0.867396</p>
 <div class="section level6">
 <h6 id="time-dependent-airline">Time-dependent airline<a class="anchor" aria-label="anchor" href="#time-dependent-airline"></a>
 </h6>
-<p>log-likelihood = 435.1414352</p>
-<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>θ</mi><mo accent="true">‾</mo></mover><mo>=</mo></mrow><annotation encoding="application/x-tex">\bar{\theta}=</annotation></semantics></math><strong>0.2427773</strong> [ -0.1299741, 0.6155286]</p>
-<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Θ</mi><mo accent="true">‾</mo></mover><mo>=</mo></mrow><annotation encoding="application/x-tex">\bar{\Theta}=</annotation></semantics></math><strong>-0.7288104</strong> [ -0.4576208, -1]</p>
+<p>log-likelihood = 435.141434</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>θ</mi><mo accent="true">‾</mo></mover><mo>=</mo></mrow><annotation encoding="application/x-tex">\bar{\theta}=</annotation></semantics></math><strong>0.2427773</strong> [ -0.129974, 0.6155285]</p>
+<p><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi mathvariant="normal">Θ</mi><mo accent="true">‾</mo></mover><mo>=</mo></mrow><annotation encoding="application/x-tex">\bar{\Theta}=</annotation></semantics></math><strong>-0.7288104</strong> [ -0.4576208, -1]</p>
 </div>
 <div class="section level6">
 <h6 id="canonical-decomposition">Canonical decomposition<a class="anchor" aria-label="anchor" href="#canonical-decomposition"></a>
@@ -247,7 +247,7 @@ smoother (time-dependent series in red)</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

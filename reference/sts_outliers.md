@@ -68,5 +68,5 @@ sts_outliers(
 ``` r
  x<-rjd3toolkit::Retail$BookStores
  sts_outliers(x)
-#> Error in .jcall("jdplus/sts/base/r/StsOutliersDetection", "Ljdplus/sts/base/r/StsOutliersDetection$Results;",     "process", data, as.integer(period), as.integer(level), as.integer(slope),     as.integer(noise), seasonal, rjd3toolkit::.r2jd_matrix(X),     ao, ls, so, cv, tcv, estimation.forward, estimation.backward): java.lang.NoSuchMethodError: 'jdplus.toolkit.base.api.data.DoubleSeq jdplus.toolkit.base.core.ssf.univariate.DefaultSmoothingResults.R(int)'
+#> Error in .jcheck(silent = FALSE): java.lang.NoSuchMethodError: 'jdplus.toolkit.base.core.ssf.akf.SmoothingOutput jdplus.toolkit.base.core.ssf.akf.AkfToolkit.robustSmooth(jdplus.toolkit.base.core.ssf.univariate.ISsf, jdplus.toolkit.base.core.ssf.univariate.ISsfData, boolean, boolean)'
 ```

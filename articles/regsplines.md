@@ -3,12 +3,14 @@
 ## Use of regular periodic cubic splines
 
 ``` r
+
 s<-log(ABS$X0.2.09.10.M)
 ```
 
 ### Usual BSM with Harrison-Stevens seasonal component
 
 ``` r
+
 model<-model()
 
 llt<-locallineartrend('l')
@@ -29,6 +31,7 @@ The results of the first two models should be identical (up to numerical
 precision)
 
 ``` r
+
 model<-model()
 seas<-splines_regular("s", 12, knots=c(0:11))
 add(model, llt)
@@ -40,8 +43,8 @@ rslt<-estimate(model, s)
 sa2<-result(rslt, "ssf.smoothing.components")
 
 summary(sa1[,2]-sa2[,2])
-#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#>       0       0       0       0       0       0
+#>       Min.    1st Qu.     Median       Mean    3rd Qu.       Max. 
+#> -1.179e-07 -1.662e-08 -4.462e-11  8.844e-11  1.603e-08  8.776e-08
 ```
 
 ### BSM with partial periodic splines seasonal component
@@ -49,6 +52,7 @@ summary(sa1[,2]-sa2[,2])
 The splines are computed on 8 points (instead of 12)
 
 ``` r
+
 model<-model()
 seas<-splines_regular("s", 12, knots=c(1,2,6,7,8,9,10,11))
 add(model, llt)
