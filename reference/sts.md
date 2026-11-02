@@ -47,8 +47,6 @@ sts(
 
   Seasonal model
 
-- tol:
-
 ## Examples
 
 ``` r
