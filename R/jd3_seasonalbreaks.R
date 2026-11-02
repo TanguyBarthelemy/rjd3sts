@@ -20,32 +20,56 @@ NULL
 #' @examples
 #'  x<-rjd3toolkit::Retail$BookStores
 #'  seasonalbreaks(x)
-seasonalbreaks<-function(y, period=NA, level=1, slope=1, noise=1, seasonal=c("HarrisonStevens", "Trigonometric", "Dummy", "Crude", "Fixed", "Unused"),
-                       X=NULL,X.td=NULL){
-
-  data<-as.numeric(y)
-  if (is.ts(y)){
-    period<-frequency(y)
-  } else {
-    if (! is.null(X.td)){
-      stop("y must be a time series when X.td is used")
+seasonalbreaks <- function(
+    y,
+    period = NA,
+    level = 1,
+    slope = 1,
+    noise = 1,
+    seasonal = c(
+        "HarrisonStevens",
+        "Trigonometric",
+        "Dummy",
+        "Crude",
+        "Fixed",
+        "Unused"
+    ),
+    X = NULL,
+    X.td = NULL
+) {
+    data <- as.numeric(y)
+    if (is.ts(y)) {
+        period <- frequency(y)
+    } else {
+        if (!is.null(X.td)) {
+            stop("y must be a time series when X.td is used")
+        }
+        if (is.na(period)) {
+            stop("y must be a time series or period must be specified")
+        }
     }
-    if (is.na(period)){
-      stop("y must be a time series or period must be specified")
+    seasonal <- match.arg(seasonal)
+    if (!is.null(X.td)) {
+        td <- rjd3toolkit::td(s = y, groups = X.td)
+        X <- cbind(X, td)
     }
-  }
-  seasonal<-match.arg(seasonal)
-  if (! is.null(X.td)){
-    td <- rjd3toolkit::td(s = y, groups = X.td)
-    X<-cbind(X, td)
-  }
 
-  so<-.jcall("jdplus/sts/base/r/StsOutliersDetection", "[D", "seasonalBreaks", data, as.integer(period),
-               as.integer(level), as.integer(slope), as.integer(noise), seasonal, rjd3toolkit::.r2jd_matrix(X))
+    so <- .jcall(
+        "jdplus/sts/base/r/StsOutliersDetection",
+        "[D",
+        "seasonalBreaks",
+        data,
+        as.integer(period),
+        as.integer(level),
+        as.integer(slope),
+        as.integer(noise),
+        seasonal,
+        rjd3toolkit::.r2jd_matrix(X)
+    )
 
-  if (is.ts(y)){
-    return(ts(so, frequency = period, start=start(y)))
-  } else {
-    return(so)
-  }
+    if (is.ts(y)) {
+        return(ts(so, frequency = period, start = start(y)))
+    } else {
+        return(so)
+    }
 }

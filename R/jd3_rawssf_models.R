@@ -17,11 +17,16 @@ NULL
 #' ll1<-.akf_likelihood(ssf1, rjd3toolkit::ABS$X0.2.09.10.M)
 #' ll2<-.akf_likelihood(ssf2, rjd3toolkit::ABS$X0.2.09.10.M)
 #' print(ll1$ll-ll2$ll)
-.ssf_as_time_invariant<-function(jssf){
-    if (! is(jssf, RAWSSF))
+.ssf_as_time_invariant <- function(jssf) {
+    if (!is(jssf, RAWSSF)) {
         stop("Not a ssf")
-    jrslt<-.jcall("jdplus/sts/base.r/StateSpaceModels", "Ljdplus/toolkit/base/core/ssf/univariate/ISsf;", "asTimeInvariant",
-                  jssf$internal)
+    }
+    jrslt <- .jcall(
+        "jdplus/sts/base.r/StateSpaceModels",
+        "Ljdplus/toolkit/base/core/ssf/univariate/ISsf;",
+        "asTimeInvariant",
+        jssf$internal
+    )
     return(rjd3toolkit::.jd3_object(jrslt, RAWSSF))
 }
 
@@ -35,16 +40,23 @@ NULL
 #' @export
 #'
 #' @examples
-.ssf<-function(component, loading, evar=0){
-    if (! is(loading, RAWLOADING))
+.ssf <- function(component, loading, evar = 0) {
+    if (!is(loading, RAWLOADING)) {
         stop("Not a loading")
-    if (! is(component, RAWSTATEBLOCK))
+    }
+    if (!is(component, RAWSTATEBLOCK)) {
         stop("Not a state block")
-    jrslt<-.jcall("jdplus/sts/base.r/StateSpaceModels", "Ljdplus/toolkit/base/core/ssf/univariate/ISsf;", "ssf",
-                  component$internal, loading$internal, evar)
+    }
+    jrslt <- .jcall(
+        "jdplus/sts/base.r/StateSpaceModels",
+        "Ljdplus/toolkit/base/core/ssf/univariate/ISsf;",
+        "ssf",
+        component$internal,
+        loading$internal,
+        evar
+    )
 
     return(rjd3toolkit::.jd3_object(jrslt, RAWSSF))
-
 }
 
 #' Title
@@ -56,17 +68,20 @@ NULL
 #' @export
 #'
 #' @examples
-.mssf<-function(component, measurements){
-    if (! is(measurements, RAWMEASUREMENTS))
+.mssf <- function(component, measurements) {
+    if (!is(measurements, RAWMEASUREMENTS)) {
         stop("Not measurements")
-    if (! is(component, RAWSTATEBLOCK))
+    }
+    if (!is(component, RAWSTATEBLOCK)) {
         stop("Not a state block")
-    jrslt<-.jcall("jdplus/sts/base.r/StateSpaceModels", "Ljdplus/toolkit/base/core/ssf/multivariate/IMultivariateSsf;", "ssf",
-                  component$internal, loading$measurements)
+    }
+    jrslt <- .jcall(
+        "jdplus/sts/base.r/StateSpaceModels",
+        "Ljdplus/toolkit/base/core/ssf/multivariate/IMultivariateSsf;",
+        "ssf",
+        component$internal,
+        loading$measurements
+    )
 
     return(rjd3toolkit::.jd3_object(jrslt, RAWMSSF))
-
 }
-
-
-

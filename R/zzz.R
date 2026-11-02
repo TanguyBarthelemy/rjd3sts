@@ -24,19 +24,17 @@ NULL
         lib.loc = libname,
         morePaths = jars_inst
     )
-    if (!result)
+    if (!result) {
         stop("Loading Java packages failed")
+    }
 
     proto.dir <- system.file("proto", package = pkgname)
     RProtoBuf::readProtoFiles2(protoPath = proto.dir)
-
-
 
     assign("sts", list(), rjd3toolkit::.jd3_env)
 
     # reload extractors
     if (rjd3jars::check_java_version()) rjd3jars::reload_dictionaries()
-
 }
 
 #' Set an option for sts
@@ -48,9 +46,9 @@ NULL
 #'
 #' @examples
 #' sts_option("test", "DUMMY")
-sts_option<-function(name, obj){
-    options<-rjd3toolkit::.jd3_env$sts
-    options[[name]]<-obj
+sts_option <- function(name, obj) {
+    options <- rjd3toolkit::.jd3_env$sts
+    options[[name]] <- obj
     assign("sts", options, rjd3toolkit::.jd3_env)
     invisible()
 }
@@ -65,8 +63,7 @@ sts_option<-function(name, obj){
 #' @examples
 #' sts_option("test", "DUMMY")
 #' get_sts_option("test")
-get_sts_option<-function(name){
-    options<-rjd3toolkit::.jd3_env$sts
-    return (options[[name]])
+get_sts_option <- function(name) {
+    options <- rjd3toolkit::.jd3_env$sts
+    return(options[[name]])
 }
-
