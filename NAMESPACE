@@ -51,6 +51,7 @@ export(block_v)
 export(bsm_model)
 export(bsm_to_ucm)
 export(components_pos)
+export(compute)
 export(cumul)
 export(cycle)
 export(equation)
@@ -59,6 +60,7 @@ export(filtered_states)
 export(filtered_states_stdev)
 export(filtering_states)
 export(filtering_states_stdev)
+export(get_sts_option)
 export(loading)
 export(loading_cyclical)
 export(loading_periodic)
@@ -92,6 +94,7 @@ export(splines_regular)
 export(ssf)
 export(sts)
 export(sts_forecast)
+export(sts_option)
 export(sts_outliers)
 export(sts_raw)
 export(tdairline_estimation)
@@ -105,21 +108,31 @@ export(var_seasonal)
 import(rjd3xjars)
 importFrom(RProtoBuf,readProtoFiles2)
 importFrom(methods,is)
-importFrom(rJava,.jarray)
-importFrom(rJava,.jcall)
-importFrom(rJava,.jcast)
-importFrom(rJava,.jcastToArray)
-importFrom(rJava,.jclass)
-importFrom(rJava,.jevalArray)
-importFrom(rJava,.jinstanceof)
-importFrom(rJava,.jnew)
-importFrom(rJava,.jnull)
-importFrom(rJava,.jpackage)
-importFrom(rJava,is.jnull)
-importFrom(rjd3toolkit,dictionary)
-importFrom(rjd3toolkit,result)
-importFrom(stats,frequency)
-importFrom(stats,is.ts)
-importFrom(stats,pt)
-importFrom(stats,start)
-importFrom(stats,ts)
+importFrom(rJava,
+  .jarray,
+  .jcall,
+  .jcast,
+  .jcastToArray,
+  .jclass,
+  .jevalArray,
+  .jinstanceof,
+  .jnew,
+  .jnull,
+  .jpackage,
+  is.jnull
+)
+importFrom(rjd3jars,
+  check_java_version,
+  reload_dictionaries
+)
+importFrom(rjd3toolkit,
+  dictionary,
+  result
+)
+importFrom(stats,
+  frequency,
+  is.ts,
+  pt,
+  start,
+  ts
+)
